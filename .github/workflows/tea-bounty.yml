@@ -1,0 +1,22 @@
+name: TEA Bounty Rewards
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  send-reward:
+    # Only run if PR was actually merged
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send TEA Reward
+        uses: isonnymichael/tea-bounty@v1
+        with:
+          rpc_url: ${{ secrets.RPC_URL }}
+          target_branch: 'main'
+          max_reward_cap: '10'
+          block_explorer_url: ${{ secrets.BLOCK_EXPLORER_URL }} # Optional
+        env:
+          TEA_PRIVATE_KEY: ${{ secrets.TEA_PRIVATE_KEY }}
