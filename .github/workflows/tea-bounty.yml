@@ -15,7 +15,7 @@ jobs:
         uses: isonnymichael/tea-bounty@v1
         with:
           rpc_url: ${{ secrets.RPC_URL }}
-          target_branch: 'main'
+          target_branch: 'master'
           max_reward_cap: '10'
           block_explorer_url: ${{ secrets.BLOCK_EXPLORER_URL }} # Optional
         env:
